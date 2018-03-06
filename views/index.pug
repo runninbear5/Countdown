@@ -15,7 +15,7 @@ html
         margin-top:0px;
         color: red;
         -webkit-animation-name: timerTrans 5s infinite; /* Safari 4.0 - 8.0 */
-        animation: timerTrans 5s infinite;
+        animation: timerTrans 5s infinite, move 10s infinite;
       }
       div.container4 p{
         margin: 0;
@@ -32,6 +32,10 @@ html
       @keyframes timerTrans {
         from {color: red;}
         to {color: black;}
+      }
+      @keyframes move {
+        from {left: 200px;}
+        to {left: 1250px;}
       }
   .container4
     body
