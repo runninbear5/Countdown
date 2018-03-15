@@ -9,6 +9,11 @@ html
         -webkit-animation-name: backgroundTrans 5s infinite; /* Safari 4.0 - 8.0 */
         animation: backgroundTrans 5s infinite;
       }
+      img{
+        position: absolute;
+        left: 50px;
+        animation: move 5s infinite;
+      }
       p {
         text-align: center;
         font-size: 60px;
@@ -25,7 +30,7 @@ html
         margin-right: -50%;
         transform: translate(-50%, -50%)
       }
-      @keyframes backgroundTrans {
+      @keyframes  backgroundTrans {
         from {background-color: black;}
         to {background-color: blue;}
       }
@@ -34,32 +39,51 @@ html
         to {color: black;}
       }
       @keyframes move {
-        from {left: 200px;}
-        to {left: 1250px;}
+        from {top: 0px;}
+        to {top: window.innerHeight;}
       }
   .container4
     body
       p#demo
-      script.
-        // Set the date we're counting down to
-        var countDownDate = new Date("April 6, 2018 15:10:00").getTime();
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-        // Get todays date and time
-        var now = new Date().getTime();
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-        // If the count down is over, write some text
-        if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "Mullen is gone! Congrats on making it through the rough year!";
-        }
-        }, 1000);
+      img#test
+  script(src='../javascript/p5.min.js')
+  script(src='../javascript/addons/p5.dom.min.js')
+  script(src='../javascript/addons/p5.sound.min.js')
+  script.
+    // Set the date we're counting down to
+    var countDownDate = new Date("March 23, 2018 15:10:00").getTime();
+    /* var countDownDate = new Date("March 13, 2018 22:11:40").getTime(); */
+    var distance = countDownDate;
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    // Get todays date and time
+    var now = new Date().getTime();
+    // Find the distance between now an the count down date
+    distance = countDownDate - now;
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    // If the count down is over, write some text
+    if (distance <= 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Mullen is gone! Congrats on making it through the rough year!";
+    document.getElementById("test").src = "/images/ballon1.png";
+    document.getElementById("test").width = "75";
+    }
+    }, 1000);
+    var i=0; 
+    var update = setInterval(function() {
+    if(distance<=0){
+    while(i<window.innerHeight){
+    document.getElementById("test").transform = 'translate('+document.getElementById("test").getBoundingClientRect().left+'px, '+i+'px)';
+    i++;
+    }
+    i=0;
+    }
+    }, 1000);
+    
