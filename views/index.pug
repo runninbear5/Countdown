@@ -39,13 +39,12 @@ html
         to {color: black;}
       }
       @keyframes move {
-        from {top: 0px;}
-        to {top: window.innerHeight;}
+        from {top: 0%;}
+        to {top: 80%;}
       }
   .container4
     body
       p#demo
-      img#test
   script(src='../javascript/p5.min.js')
   script(src='../javascript/addons/p5.dom.min.js')
   script(src='../javascript/addons/p5.sound.min.js')
@@ -72,18 +71,19 @@ html
     if (distance <= 0) {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "Mullen is gone! Congrats on making it through the rough year!";
-    document.getElementById("test").src = "/images/ballon1.png";
-    document.getElementById("test").width = "75";
     }
     }, 1000);
-    var i=0; 
+    var x=0; 
     var update = setInterval(function() {
     if(distance<=0){
-    while(i<window.innerHeight){
-    document.getElementById("test").transform = 'translate('+document.getElementById("test").getBoundingClientRect().left+'px, '+i+'px)';
-    i++;
+    while(x<window.innerHeight*2){
+    var balloon = document.createElement("IMG");
+    balloon.src = "/images/ballon1.png";
+    balloon.width = "75";
+    balloon.style.left = x+"px";
+    document.body.appendChild(balloon);
+    x += 125;
     }
-    i=0;
     }
     }, 1000);
     
