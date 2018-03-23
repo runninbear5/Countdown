@@ -48,10 +48,13 @@ html
   script(src='../javascript/p5.min.js')
   script(src='../javascript/addons/p5.dom.min.js')
   script(src='../javascript/addons/p5.sound.min.js')
+  script(src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js")
   script.
     // Set the date we're counting down to
-    var countDownDate = new Date("March 23, 2018 15:10:00").getTime();
-    /* var countDownDate = new Date("March 13, 2018 22:11:40").getTime(); */
+    //first Period end
+    var countDownDate = new Date("March 23, 2018 9:19:00").getTime();
+    //third Period    
+    /* var countDownDate = new Date("March 23, 2018 13:32:00").getTime(); */
     var distance = countDownDate;
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -70,7 +73,7 @@ html
     // If the count down is over, write some text
     if (distance <= 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "Mullen is gone! Congrats on making it through the rough year!";
+    document.getElementById("demo").innerHTML = "Mullen is gone! Congrats on surviving!";
     }
     }, 1000);
     var x=0; 
